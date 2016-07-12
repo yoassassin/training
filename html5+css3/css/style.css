@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+body,h1,ul{
+	margin: 0;/*去掉标签自带的margin，使其贴着浏览器的边框*/
+	padding: 0;
+}
+
+
+
+ul{
+	list-style: outside none none;/*去掉ul标识符*/
+}
+
+#nav{
+	width: 100%;
+	height: 70px;
+	background-color: #333;
+}
+
+#nav > section { /*>代表第一个子元素*/
+	width:1263px;
+	height: 70px;
+	margin:0 auto;	/*上下为0，左右auto就是居中*/
+}
+
+#nav > section > h1{
+	width: 240px;
+	height: 70px;
+	background-image: url(../image/logo.png);
+	text-indent: -9999px;/*缩进=tab按键，负数可以把文字移除浏览器外边框*/
+	float:left;
+}
+
+#nav > section > ul{
+	color:       #eee;
+	float:       right;
+	height:      70px;
+	text-align:  center;/*水平居中*/
+	line-height: 70px;/*只要和行高一样就垂直居中了*/
+	width: 650px;
+}
+
+#nav > section > ul > li{
+	float: left;
+	width:120px;
+	
+
+}
