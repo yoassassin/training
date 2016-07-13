@@ -1,11 +1,22 @@
-@charset "utf-8";
-
+@charset "utf-8"; /*默认就是utf-8*/
+/*
+1.文字的居中: text-align + line-height
+2.块的居中（如果有垂直定位的话，就是上下对齐，垂直上的看成一条线，块在上面移动就是垂直， 横着移动就是水平）： 相对定位 + 绝对定位
+3.有了class选择器，就可以不用每次都是> >选择下一层的子标签去定位了，而且基本都a b，a标签下所有的b元素这样使用，因为class已经明确好一个区域了，所以不用当心影响其他地域的标签
+4.id一般 选择命名肯定不会重复的一些html逻辑块里,比如header，nav，搜索框，footer等
+5.居中定位的几种方式：http://www.cnblogs.com/zyy711865/p/3479064.html
+	1)绝对定位 + 相对定位
+	2）margin和绝对定位一起
+	3)光margin好像也可以啊 margin:50% auto
+*/
 body,h1,ul{
 	margin: 0;/*去掉标签自带的margin，使其贴着浏览器的边框*/
 	padding: 0;
 }
 
-
+.none{
+	display: none;
+}
 
 ul{
 	list-style: outside none none;/*去掉ul标识符*/
@@ -13,19 +24,41 @@ ul{
 a{
 	text-decoration:none;
 }
-#nav{
+#header{
 	width: 100%;
+	min-width: 1263px;
 	height: 70px;
 	background-color: #333;
+	/*box-shadow: 0 11px 100px #eee;/* 投影白色*/
+	box-shadow: 0 11px 100px rgba(74, 175, 123,0.5);/*谈绿色 rgb是颜色，3种颜色调色，a是透明度，1是不透明*/
+	position: relative;
+	/*
+	为了加阴影才加的，因为下面的search图片已经是relative了，是浮在上面的，覆盖了阴影（阴影是在header下面额外加出来的）
+	box-shadow:inset x-offset y-offset blur-radius spread-radius color
+	X-offset:是指阴影水平偏移量其值可以是正负值可以取正负值，如果值为正值，则阴影在对象的右边，反之其值为负值时，阴影在对象的左边；
+	Y-offset:是指阴影的垂直偏移量，其值也可以是正负值，如果为正值，阴影在对象的底部，反之其值为负值时，阴影在对象的顶部；
+	阴影模糊半径：此参数是可选，，但其值只能是为正值，如果其值为0时，表示阴影不具有模糊效果，其值越大阴影的边缘就越模糊,不允许负值,越大越谈；
+	阴影扩展半径：此参数可选，其值可以是正负值，如果值为正，则整个阴影都延展扩大，反之值为负值是，则缩小
+	往x轴或Y轴那边投影
+
+	x-offset  x 轴偏移   0                     
+	y-offset y轴偏移  0
+	blur 模糊值   5px 
+	color of shadow 阴影颜色   
+	rgba(40, 173, 243, 0.5);        
+	RGB是说颜色，A是指透明度  
+	红40, 绿173, 蓝243,   透明度50%
+*/
+	z-index: 9999;
 }
 
-#nav .center { /*a > b 代表改a标签下的第一代子元素, a b 代表a下的所有b元素，包括孙子代*/ /*简写，原来是#nav > section*/
+#header .center { /*a > b 代表改a标签下的第一代子元素, a b 代表a下的所有b元素，包括孙子代 /*简写，原来是#nav > section*/
 	width:1263px; /*滚动条是17px，减去17px*/
 	height: 70px;
 	margin:0 auto;	/*上下为0，左右auto就是居中*/
 }
 
-#nav .logo{/*简写，原来是#nav > section > h1*/
+#header .logo{/*简写，原来是#nav > section > h1*/
 	width: 240px;
 	height: 70px;
 	background-image: url(../image/logo.png);
@@ -33,7 +66,7 @@ a{
 	float:left;
 }
 
-#nav .link{    /*简写，原来是#nav > section > ul*/  /a.b是a标签中class为b的a标签，而a .b是a标签下的所有class为b的标签/
+#header .link{    /*简写，原来是#nav > section > ul*/  /a.b是a标签中class为b的a标签，而a .b是a标签下的所有class为b的标签/
 	color:       #eee;
 	float:       right;
 	height:      70px;
@@ -43,20 +76,113 @@ a{
 
 }
 
-#nav .link li{/*简写， nav下的所有 link 下的所有 li 元素，原来是#nav > section > ul > li*/
+#header .link li{/*简写， nav下的所有 link 下的所有 li 元素，原来是#nav > section > ul > li*/
 	float: left;
 	width:120px;
 	color: #eee;
 }
 
-#nav > section > ul > li > a {
+#header .link li a {/*简写，>只能找到儿子代，孙子找不到 nav下的所有 link 下的所有 li 元素，原来是#nav > section > ul > li*/
 	color:#eee;
 	display: block;
-	text-align: 
 }
 
 /*简写，原来#nav > section > ul > li > a:hover,#nav > section > ul > li.active > a {*/
-#nav .link a:hover,
-#nav .active a {
+#header .link a:hover,
+#header .active a {
 	background-color: #000;
+}
+
+#search{
+	min-width: 1263px;
+	width: 100%;/*这里不是图像的1920px宽度*/
+	height: 600px;
+	/*
+	问题1：分辨率最低支持1280到1920以上，我们图片是1920的，所以1920显示整张图片
+	低于1920显示中间部分，低于1280会有下方滚动条,超过1920会平铺
+
+	问题2：缩小到1280里面，右边的nav没有样式了
+	浏览器缩小会自适应，导致的，把最低宽度设置为1263px、设置header最小为1263px
+	解决了header还要解决其他的：设置search最小值，基本上100%的地方都设置一个最小值，因为还没设置响应式，
+
+	*/
+	background:  url(../image/search.jpg) no-repeat center;
+	/*如果要为了迎合大屏幕1080p以上的，左右不想空白的话，可以背景颜色做渐变色和图片搭配
+	background: blue（加个渐变色，这里颜色会涂满白色空隙） url(../image/search.jpg) no-repeat center;*/
+	position: relative;
+}
+
+/*
+					center搜索框要居中
+1.水平居中简单，只要margin:0 auto,但是垂直居中麻烦，要绝对定位和相对定位(只有把父类变成relative和absolute，子类才能定位)
+2.用相对于父类(#search)做相对定位,矩形的最左上角的点定位到了中间了，但是矩形不是居中的
+3,再减去长度和宽度一半的位置，通过外边来减， 上-30,右不动，下不动，左-300，坐标向下和右移动 正数，左和上移动是负数
+*/
+#search .center{
+	width: 600px;
+	height: 60px;
+	background-color: #000;
+	top:50%;
+	left:50%;
+	margin: -30px 0 0 -300px;
+	opacity: 0.6;/*透明化一般不在这里做，要不然搜索框里输入的文字也会被透明化*/
+	border-radius: 10px; /*圆角*/
+	position: absolute;
+	/*
+	1.这里为什么用absolute,而且设置relative的话，图片会上移遮盖了导航栏nav,而absolute不会
+	因为absolute是针对父元素 定位的，  而relative是根据自己 原先位置定位的，这里原先的位置已经被magin -30px 0 0 -300px上移和左移了， 已经覆盖到nav上了
+	参考博客园：http://www.cnblogs.com/jiqing9006/archive/2012/07/26/2610586.html 和http://zhidao.baidu.com/link?url=048LY2Xfm4XxLc1SCGpg0u2IXelQY4RohKOBktuJOAIuuRmFh1Ts5OLzXGHcXb_1sfwXE3i86lp6mBIBC0OEcq
+
+	先说相对定位：跟它的名一样，相对嘛，要有一个参照物，但这个参照不是别的，是它自己呢，也就是说没设相对定位的位置，
+	那你会问了，设没设都在那个位置为什么要设呢，因为只有设置了才能使 TOP,LEFT这些生效，也就是设了才能相对自己原来的位置偏移，
+	原来的位置保留着，偏移后会把其它的层遮罩住。
+	再说绝对定位：在布局里不可能有绝对定位的，再怎么样都有一个参照位置的，绝对定位的参照位置就不像相对那样是自己了，至于是哪个，
+	就看它的上级或上上级有没有定位了，也就是有没有position:relative;或position:fixed了，好像position:inherit;也行，前面两个可以，
+	后面那个不设什么的不用也行，最好用position:relative;吧,转入正题，当要绝对定位的层设好要参照位置的层后，就可以用TOP，LEFT这些来定位置了，
+	如果它的上级或上上级都没定位的话只就会根据BODY的位置来定位了,还有最后一点，绝对定位是不占位置的，它会像PS的图层一样单独做一层，
+	至于第几层你可以通过z-index:这个属性来设置
+	*/
+}
+
+#search .search{
+	width: 466px;
+	height: 54px; /*为什么父类的div的height是60px,这里是54px确正好一样高???*/
+	background-color: #fff;
+	color: #666;/*字体颜色*/
+	font-size: 20px;
+	border-radius: 10px;
+	padding: 0 10px;
+
+/*如果 button是在center里面的话。下面的定位不加也可以，我觉得，因为父类已经定位好了*/
+	top:50%;
+	left:50%;
+	margin: -29px 0 0 -296px; /*好像只有设置上和左能移动啊*/
+	position: absolute;/*绝对定位是浮在上面的,不占位置的*/
+	outline: none; /*有些浏览器focus后会有外边框*/
+	z-index: 1; /*如果按钮和输入框点不了，说明被覆盖了，把z-index提高*/
+}
+
+#search .button{
+	width: 103px;
+	height: 60px; /*为什么父类的div的height是60px,这里是54px确正好一样高???*/
+	background-color: #eee;
+	color: #666;/*字体颜色*/
+	font-size: 24px;
+	border-radius: 10px;
+
+/*如果 button是在center里面的话。下面的定位不加也可以，我觉得，因为父类已经定位好了*/
+	top:50%;
+	left:50%;
+	margin: -29px 0 0 195px;
+	position: absolute;
+	cursor: pointer;
+	font-weight: bold;
+	z-index: 1;
+}
+
+#tour{
+	width: 1263px;
+	height: 1200px;
+	background-color: grey;
+	margin: 0 auto;
 }

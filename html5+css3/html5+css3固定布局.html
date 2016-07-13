@@ -1,28 +1,71 @@
-<!DOCTYPE html>
-<html>
+<!-- 安装Emmet,使用sublime更方便使用快捷键 -->
+<!DOCTYPE html> 
+<!-- 
+1.查看html5的大纲（自己写出来的代码结构要符合大纲：（大纲必须有标题（body下也要有标题，body是主大纲，nav(可以不加)，section必须有h1-h6）有untitled的话要改改）https://gsnedders.html5.org/outliner/
+
+	符合大纲，要加h1-h6的标签，但是加了又会破坏文档结构，就把h1-h6设置会不显示并且不占地方 display:none
+
+2.emmet快捷键文档：http://docs.emmet.io/cheat-sheet/
+生成html页面：!+tab   
+
+标签使用：
+ul#nav>li*4>a
+table+ 或者 ul+： 子标签自动生成
+div#divName： id取名字
+input:hidden： 表单元素
+posa  : position:absolute
+posr  : position:relative
+
+3.id选择器适合中小型网页，大型基本都用class
+4.滚动条17px，一般最大的width - 17px
+5.background-img会覆盖background-color
+
+
+-->
+<html lang="zh-cn"> <!-- 告诉浏览器页面我这个是中文页面，有些浏览器有翻译功能的 -->
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8"> <!-- 设置浏览器格式为utf-8 -->
 	<title>项目实战-PC固定布局</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<h2 class="none">主页</h2> <!--  为了显示大纲才加的h2,不让其显示破坏已经排版好了的文档结构 -->
+<header id="header">
+	<!-- <section class="center"> section是某个区域章节的标题，h1是整个网站的标题，而ul部分是导航连接，严格来讲也不算章节，所以用div更好 -->
+	<div class="center">
+		<h1 class="logo">飘城旅行社</h1>
+		<nav class="link">
+		<h2 class="none">导航</h2><!--  为了显示大纲才加的h2,不让其显示破坏已经排版好了的文档结构 -->
+			<ul>
+				<li class   = "active"><a href="###">首页</a></li>
+				<li><a href = "###">旅游咨询</a></li>
+				<li><a href = "###">机票订购</a></li>
+				<li><a href = "###">旅游欣赏</a></li>
+				<li><a href = "###">公司简介</a></li>
+			</ul>
+		</nav>
+	<!-- </section> -->
+	</div>
+</header>
 
-<nav id="nav">
-<section class="center">
-	<h1 class="logo">飘城旅行社</h1>
-	<ul class="link">
-		<li class="active"><a href="###">首页</a></li>
-		<li><a href="###">旅游咨询</a></li>
-		<li><a href="###">机票订购</a></li>
-		<li><a href="###">旅游欣赏</a></li>
-		<li><a href="###">公司简介</a></li>
-	</ul>
-</section>
-</nav>
+<!-- 
+<section>
+	<h2 class="none">body</h2> 为了显示大纲才加的h2,不让其显示破坏已经排版好了的文档结构
+</section> -->
+<div id="search">
+	<!-- 中间搜索框 -->
+	<div class="center"></div>
+	<input type="text" class="search" placeholder="请输入旅游景点或城市">
+<!-- 	<input type="search"> /*一般search可以用这个,有个默认的删除按键，不过很多网页还不支持，还是用text*-->
+	<button class="button">搜索</button>
+	<div class="center"></div>
 
+</div>
 
-<header>header</header>
-<section>body</section>
+<div id="tour">tour
+<div style="margin:50% auto;width: 100px;height: 100px;background-color: red"></div>
+</div>
+
 <footer>footer</footer>
 	
 
