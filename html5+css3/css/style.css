@@ -10,20 +10,22 @@ body,h1,ul{
 ul{
 	list-style: outside none none;/*去掉ul标识符*/
 }
-
+a{
+	text-decoration:none;
+}
 #nav{
 	width: 100%;
 	height: 70px;
 	background-color: #333;
 }
 
-#nav > section { /*>代表第一个子元素*/
-	width:1263px;
+#nav .center { /*a > b 代表改a标签下的第一代子元素, a b 代表a下的所有b元素，包括孙子代*/ /*简写，原来是#nav > section*/
+	width:1263px; /*滚动条是17px，减去17px*/
 	height: 70px;
 	margin:0 auto;	/*上下为0，左右auto就是居中*/
 }
 
-#nav > section > h1{
+#nav .logo{/*简写，原来是#nav > section > h1*/
 	width: 240px;
 	height: 70px;
 	background-image: url(../image/logo.png);
@@ -31,18 +33,30 @@ ul{
 	float:left;
 }
 
-#nav > section > ul{
+#nav .link{    /*简写，原来是#nav > section > ul*/  /a.b是a标签中class为b的a标签，而a .b是a标签下的所有class为b的标签/
 	color:       #eee;
 	float:       right;
 	height:      70px;
 	text-align:  center;/*水平居中*/
 	line-height: 70px;/*只要和行高一样就垂直居中了*/
 	width: 650px;
+
 }
 
-#nav > section > ul > li{
+#nav .link li{/*简写， nav下的所有 link 下的所有 li 元素，原来是#nav > section > ul > li*/
 	float: left;
 	width:120px;
-	
+	color: #eee;
+}
 
+#nav > section > ul > li > a {
+	color:#eee;
+	display: block;
+	text-align: 
+}
+
+/*简写，原来#nav > section > ul > li > a:hover,#nav > section > ul > li.active > a {*/
+#nav .link a:hover,
+#nav .active a {
+	background-color: #000;
 }
