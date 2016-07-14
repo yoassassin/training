@@ -16,10 +16,13 @@ input:hidden： 表单元素
 posa  : position:absolute
 posr  : position:relative
 
-3.id选择器适合中小型网页，大型基本都用class
+3.id选择器适合中小型网页，大型基本都用class，比如一个div里有p和ul和li，要设置他们3个的样式，不用每个都定义id,只要在div定义class就好了，通过div的class直接去找下面3个更方便
 4.滚动条17px，一般最大的width - 17px
 5.background-img会覆盖background-color
-
+6.何时使用section
+表示文章内的一块章节 ，有h1-h6标题就用（显示在大纲里）
+http://www.cnblogs.com/ambon/articles/5669616.html
+7.网站的维护，只需要改图片和图片下方的价格 满意度等，不需要动css，只要改html
 
 -->
 <html lang="zh-cn"> <!-- 告诉浏览器页面我这个是中文页面，有些浏览器有翻译功能的 -->
@@ -62,8 +65,157 @@ posr  : position:relative
 
 </div>
 
-<div id="tour">tour
-<div style="margin:50% auto;width: 100px;height: 100px;background-color: red"></div>
+<!--
+<div id="tour">
+测试 css  第五点/3)光margin好像也可以啊 margin:50% auto,不过这个除非是在文档流没有其他元素的情况下，不然会破坏其他文档流的位置，所以最好还是absolute,不过会覆盖其他的元素
+<div style="background-color: #eee;width: 100px;height: 100px"></div>
+<div style="background-color: #eee;width: 100px;height: 100px"></div>
+<div style="background-color: #eee;width: 100px;height: 100px"></div>
+<div style="margin:42% auto ;width: 100px;height: 100px;background-color: red"></div> 
+</div>
+-->
+
+<div id="tour">
+
+<!-- section用在有h1-h6的元素上 -->
+	<section class="center">
+		<h2>热门旅游</h2> <!-- h2和p元素都有间隙，取出margin和padding -->
+		<p>国内旅游、国外旅游、自助旅游、自驾旅游、游轮签证、主题游等各种最新人们旅游推荐</p>
+	</section>
+
+<!-- 图文并茂用figure -->
+	<!-- 先做一个figure的图片，然后复制黏贴做另外9个，不过要注意排列位置 -->
+	<!-- 复制9个后并不是3*3样式的，因为figure之间也有间距 -->
+	<!-- 调整完3*3间距后，删除其余8个，继续只做一个，因为要css设计价格，和类型在图片上 -->
+	<a href=###> <!-- 最后在figure元素外面价格超链接a标签，可以跳转 -->
+		<figure> 
+			<img src="image/tour1.jpg" alt="曼谷7日游">
+			<!-- 图片标题 -->
+			<figcaption><strong class="title">&lt;曼谷漫游&gt;</strong>抱团特惠，超丰富景点，升级1晚国五，无自费，更赠送600/元成人自费券</figcaption> <!--默认居中，要居左 strong强调不一定做粗体-->
+			<div>
+			<!-- em斜体要浮动到图片右下角，价格要在图片左下方 -->
+				<em class="sat">满意度77%</em> <!-- 改figure为居中 -->
+				<span class="price">¥ <strong>2864</strong>起</span>
+			</div>
+			<!-- type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对 -->
+			<div class="type">国内长线</div> 
+		</figure>
+	</a>
+
+	<!-- 最后直接复制其他8张图片 -->
+
+	<a href=###> <!-- 最后在figure元素外面价格超链接a标签，可以跳转 -->
+		<figure> 
+			<img src="image/tour2.jpg" alt="">
+			<!-- 图片标题 -->
+			<figcaption><strong class="title">&lt;澳门旅游&gt;</strong>抱团特惠，超丰富景点，升级1晚国五，无自费，更赠送600/元成人自费券</figcaption> <!--默认居中，要居左 strong强调不一定做粗体-->
+			<div>
+			<!-- em斜体要浮动到图片右下角，价格要在图片左下方 -->
+				<em class="sat">满意度97%</em> <!-- 改figure为居中 -->
+				<span class="price">¥ <strong>8888</strong>起</span>
+			</div>
+			<!-- type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对 -->
+			<div class="type">处境长游</div> 
+		</figure>
+	</a>
+	<a href=###> <!-- 最后在figure元素外面价格超链接a标签，可以跳转 -->
+		<figure> 
+			<img src="image/tour3.jpg" alt="">
+			<!-- 图片标题 -->
+			<figcaption><strong class="title">&lt;马尔代夫双鱼岛4晚6日自助游&gt;</strong>上海出发，飞机+酒店 包含早晚餐 + 快艇</figcaption> <!--默认居中，要居左 strong强调不一定做粗体-->
+			<div>
+			<!-- em斜体要浮动到图片右下角，价格要在图片左下方 -->
+				<em class="sat">满意度97%</em> <!-- 改figure为居中 -->
+				<span class="price">¥ <strong>8039</strong>起</span>
+			</div>
+			<!-- type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对 -->
+			<div class="type">处境长游</div> 
+		</figure>
+	</a>
+	<a href=###> <!-- 最后在figure元素外面价格超链接a标签，可以跳转 -->
+		<figure> 
+			<img src="image/tour4.jpg" alt="">
+			<!-- 图片标题 -->
+			<figcaption><strong class="title">&lt;海南双飞5日游&gt;</strong>含往返接送，全程5星级酒店，一价全含，零自费</figcaption> <!--默认居中，要居左 strong强调不一定做粗体-->
+			<div>
+			<!-- em斜体要浮动到图片右下角，价格要在图片左下方 -->
+				<em class="sat">满意度90%</em> <!-- 改figure为居中 -->
+				<span class="price">¥ <strong>3333</strong>起</span>
+			</div>
+			<!-- type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对 -->
+			<div class="type">自助畅游</div> 
+		</figure>
+	</a>
+	<a href=###> <!-- 最后在figure元素外面价格超链接a标签，可以跳转 -->
+		<figure> 
+			<img src="image/tour5.jpg" alt="">
+			<!-- 图片标题 -->
+			<figcaption><strong class="title">&lt;曼谷漫游&gt;</strong>抱团特惠，超丰富景点，升级1晚国五，无自费，更赠送600/元成人自费券</figcaption> <!--默认居中，要居左 strong强调不一定做粗体-->
+			<div>
+			<!-- em斜体要浮动到图片右下角，价格要在图片左下方 -->
+				<em class="sat">满意度77%</em> <!-- 改figure为居中 -->
+				<span class="price">¥ <strong>2864</strong>起</span>
+			</div>
+			<!-- type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对 -->
+			<div class="type">国内长线</div> 
+		</figure>
+	</a>
+	<a href=###> <!-- 最后在figure元素外面价格超链接a标签，可以跳转 -->
+		<figure> 
+			<img src="image/tour6.jpg" alt="">
+			<!-- 图片标题 -->
+			<figcaption><strong class="title">&lt;曼谷漫游&gt;</strong>抱团特惠，超丰富景点，升级1晚国五，无自费，更赠送600/元成人自费券</figcaption> <!--默认居中，要居左 strong强调不一定做粗体-->
+			<div>
+			<!-- em斜体要浮动到图片右下角，价格要在图片左下方 -->
+				<em class="sat">满意度77%</em> <!-- 改figure为居中 -->
+				<span class="price">¥ <strong>2864</strong>起</span>
+			</div>
+			<!-- type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对 -->
+			<div class="type">国内长线</div> 
+		</figure>
+	</a>
+	<a href=###> <!-- 最后在figure元素外面价格超链接a标签，可以跳转 -->
+		<figure> 
+			<img src="image/tour7.jpg" alt="">
+			<!-- 图片标题 -->
+			<figcaption><strong class="title">&lt;曼谷漫游&gt;</strong>抱团特惠，超丰富景点，升级1晚国五，无自费，更赠送600/元成人自费券</figcaption> <!--默认居中，要居左 strong强调不一定做粗体-->
+			<div>
+			<!-- em斜体要浮动到图片右下角，价格要在图片左下方 -->
+				<em class="sat">满意度77%</em> <!-- 改figure为居中 -->
+				<span class="price">¥ <strong>2864</strong>起</span>
+			</div>
+			<!-- type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对 -->
+			<div class="type">国内长线</div> 
+		</figure>
+	</a>
+	<a href=###> <!-- 最后在figure元素外面价格超链接a标签，可以跳转 -->
+		<figure> 
+			<img src="image/tour8.jpg" alt="">
+			<!-- 图片标题 -->
+			<figcaption><strong class="title">&lt;曼谷漫游&gt;</strong>抱团特惠，超丰富景点，升级1晚国五，无自费，更赠送600/元成人自费券</figcaption> <!--默认居中，要居左 strong强调不一定做粗体-->
+			<div>
+			<!-- em斜体要浮动到图片右下角，价格要在图片左下方 -->
+				<em class="sat">满意度77%</em> <!-- 改figure为居中 -->
+				<span class="price">¥ <strong>2864</strong>起</span>
+			</div>
+			<!-- type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对 -->
+			<div class="type">国内长线</div> 
+		</figure>
+	</a>
+	<a href=###> <!-- 最后在figure元素外面价格超链接a标签，可以跳转 -->
+		<figure> 
+			<img src="image/tour9.jpg" alt="">
+			<!-- 图片标题 -->
+			<figcaption><strong class="title">&lt;曼谷漫游&gt;</strong>抱团特惠，超丰富景点，升级1晚国五，无自费，更赠送600/元成人自费券</figcaption> <!--默认居中，要居左 strong强调不一定做粗体-->
+			<div>
+			<!-- em斜体要浮动到图片右下角，价格要在图片左下方 -->
+				<em class="sat">满意度77%</em> <!-- 改figure为居中 -->
+				<span class="price">¥ <strong>2864</strong>起</span>
+			</div>
+			<!-- type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对 -->
+			<div class="type">国内长线</div> 
+		</figure>
+	</a>					
 </div>
 
 <footer>footer</footer>

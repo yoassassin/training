@@ -7,9 +7,11 @@
 5.居中定位的几种方式：http://www.cnblogs.com/zyy711865/p/3479064.html
 	1)绝对定位 + 相对定位
 	2）margin和绝对定位一起
-	3)光margin好像也可以啊 margin:50% auto
+	3)光margin好像也可以啊 margin:50% auto,不过这个除非是在文档流没有其他元素的情况下，不然会破坏其他文档流的位置，所以最好还是absolute,不过会覆盖其他的元素
+6.先从小局部做做，再调整大局部，比如居中，大局部会影响其他，小局部做好了居中，再调试
+7.相对定位： 别的元素是参考相对定位元素的原有位置，但是相对定位虽然在文档流里，但是不会把外边框挤出去，挤大
 */
-body,h1,ul{
+body,h1,ul,h2,p,figure{
 	margin: 0;/*去掉标签自带的margin，使其贴着浏览器的边框*/
 	padding: 0;
 }
@@ -28,7 +30,7 @@ a{
 	width: 100%;
 	min-width: 1263px;
 	height: 70px;
-	background-color: #333;
+	background-color: #333; /*颜色缩写，原本6位，2位相同即可缩写, #880066-->#806*/
 	/*box-shadow: 0 11px 100px #eee;/* 投影白色*/
 	box-shadow: 0 11px 100px rgba(74, 175, 123,0.5);/*谈绿色 rgb是颜色，3种颜色调色，a是透明度，1是不透明*/
 	position: relative;
@@ -183,6 +185,98 @@ a{
 #tour{
 	width: 1263px;
 	height: 1200px;
-	background-color: grey;
+	/*background-color: #ccc; 更淡灰色，为了排列文档流 用背景色， 排好了可以删除*/
 	margin: 0 auto;
+	/*3*3图靠左，要居中，内联块是可以用text-align居中的，在父类center里做居中处理*/
+	text-align: center;
+}
+
+#tour .center{
+	text-align: center;
+}
+
+#tour .center h2{
+	margin: 30px 0; /*上下10px撑开点高度*/
+	font-size:45px;
+	color: #666;
+	letter-spacing: 2px;/*字体间距*/
+}
+
+#tour .center p{
+	margin: 10px 0; /*margin会重叠，所以上面就30，上下10px撑开点高度*/
+	/*font-size:45px;*/
+	color: #666;
+	letter-spacing: 2px;/*字体间距*/
+}
+
+#tour figure{
+	border:1px solid #ddd; /*#ddd淡灰色*/
+	display: inline-block;/*figure是块元素，所以border会占一整行，我们只要包围图片的border就好了，只占本身距离用inline，但是inline改变不了高度宽度，所以用inline-block*/
+	padding: 4px;/*边框和图片空出一点距离*/
+	border-radius:10px;
+	margin:15px 12px;/*图片太聚集了，分开点*/
+	width:380px;/*figcaption里东西太多，会把布局撑开来，width限制一下,会换行*/
+	text-align: left;
+	position: relative;/*为了 国内长线 做定位用的*/
+	cursor: pointer;
+
+}
+
+/*图片下面和border有白色空隙的解决方式*/
+#tour figure img{
+	vertical-align: middle; /* 设置垂直高度*/
+}
+
+#tour figcaption{
+	/*text-align: left;*/
+	color:#777;
+	font-size: 14px;
+	letter-spacing: 1px;
+	line-height: 1.5; /*行高1.5倍*/
+	padding:5px 0 7px 0/*做好price和satisfied发现有点拥挤*/
+}
+
+#tour .title{
+	color:#333;
+	font-weight: normal; /*去掉粗体*/
+}
+
+#tour .sat{
+	float:right; /*直接右浮动就好了，上面已经被块占据了位置了，不会浮上去的*/
+	font-size: 14px;
+	color:#999;/*#111到#999都是黑色，111颜色最深，颜色淡一点*/
+	font-style: normal;/*取消倾斜*/
+	/*background-color:red;调整完，发现满意度比价格高一点，并且太靠右边了, 加背景颜色测试他是内联还是块，内联的话就红色一小块,inline用相对定位比较好，但是下面这也也可以啊*/
+	/*	用相对定位可能是因为不会破坏已经布置好的文档流吧，下面的line-height会把边框撑大
+	line-height: 22px; 调整上下高度
+	padding: 0 5px 0 0; 调整 往 右边靠一点
+	*/
+	position: relative;
+	top:5px;	/*上边空出5个像素 相对定位： 别的元素是参考相对定位元素的原有位置，但是相对定位虽然在文档流里，但是不会把外边框挤出去，挤大*/
+	right: 5px; /*右边空出5个像素*/
+
+}
+
+#tour .price{
+	color: #F60; /*橘红色*/
+	font-size: 13px;
+	letter-spacing: 1px;
+}
+
+#tour .price strong{
+	font-size: 20px; 
+}
+
+#tour .type{
+	width:       90px;
+	height:      25px;
+	line-height: 25px;
+	color:       #fff;
+	font-size:        14px;
+	background-color: #59b280;
+	text-align: center; 
+	/*type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对*/
+	position: absolute; /*不写4个方向的位置就会在最近的块元素的下方，他不会侵占其他元素位置，脱离了文档流，所以刚刚被他拉长的边框又缩进回去了*/
+	top:4px; /*在padding的4px里面*/
+	left:4px;
 }
