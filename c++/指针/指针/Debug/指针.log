@@ -1,11 +1,13 @@
 ﻿  pointer.c
-c:\git\c++\指针\指针\pointer.c(90): warning C4047: '=': 'int' differs in levels of indirection from 'int *'
-c:\git\c++\指针\指针\pointer.c(59): warning C4477: 'printf' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'int'
-c:\git\c++\指针\指针\pointer.c(67): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
-c:\git\c++\指针\指针\pointer.c(80): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
-c:\git\c++\指针\指针\pointer.c(82): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'int *'
-c:\git\c++\指针\指针\pointer.c(98): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'int *'
-c:\git\c++\指针\指针\pointer.c(99): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
-c:\git\c++\指针\指针\pointer.c(102): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'int *'
+c:\git\c++\指针\指针\pointer.c(104): warning C4047: '=': 'int' differs in levels of indirection from 'int *'
+c:\git\c++\指针\指针\pointer.c(120): warning C4047: '=': 'int' differs in levels of indirection from 'int *'
+c:\git\c++\指针\指针\pointer.c(54): warning C4047: 'initializing': 'int **' differs in levels of indirection from 'int *'
+c:\git\c++\指针\指针\pointer.c(73): warning C4477: 'printf' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'int'
+c:\git\c++\指针\指针\pointer.c(81): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
+c:\git\c++\指针\指针\pointer.c(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
+c:\git\c++\指针\指针\pointer.c(96): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'int *'
+c:\git\c++\指针\指针\pointer.c(112): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'int *'
+c:\git\c++\指针\指针\pointer.c(113): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
+c:\git\c++\指针\指针\pointer.c(117): warning C4477: 'printf' : format string '%x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'int *'
   指针.vcxproj -> C:\Git\c++\指针\Debug\指针.exe
   指针.vcxproj -> C:\Git\c++\指针\Debug\指针.pdb (Partial PDB)

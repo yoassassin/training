@@ -43,7 +43,19 @@
 void main()
 {
 	int num = 10;
-	//int *numPointer = &num;
+	//int *numPointer = &num;    
+	/*
+	chat *p，*指示定义了一个指针。
+	*p是p指向的内容（这个*和定义时候的*不同）
+
+	铭记：（P是一个地址(保存的是指针指向的某个地址,如&xxx)。*p是p指向的内容（&xxx地址的空间里的数据，既xxx的值）；ps：&这个是取地址符号，所以 &*p 和 p 相等）
+	*/
+
+	int **doublePointer = &num; //*指示定义了一个指针， **代表了一个指针指向了另一个指针，指针的指针。  
+	int *anotherPointer;
+	anotherPointer = &num; //真正使用指针的时候其实是没*的， 有*的地方代表了指针指向的来源的 地址上的空间数据， 比如&num地址上的num的值为10； 
+
+
 	printf("%p\n", &num); //地址为0042FDBC，内存中显示0x0042FDBC， 0x代表16进制
 	//printf("%x\n", num);//a（既16进制的正数10）既地址里的内容。（后面解释是错的？）  %p 是以16进制的形式输出内存地, %p表示要输出变量的地址。比如printf("%p",a);就表示输出a的地址，
 	//printf("%p\n", &numPointer);//0042FDB0（内存中显示：0x0042FDB0） 指针numPointer声明后，占用的地址 
@@ -107,18 +119,35 @@ void main()
 
 	*numPointer2 = &num;//使指针指向num的地址，同时num地址的空间内容就是它本身。 等于是废话：指针指向的地址 所保存的信息 就是它自己
 
-	/**测试string类型的的指针**/
-	//char a = 'a';
-	//char *p = &a;
-	//
-	//printf("\n");
-	////printf("检查地址是否相同。");
-	//printf("%p\n", &a);
-	//printf("%p\n", &p);
-/*
+	/**测试Char/String类型的的指针**/
 
-	char str[] = "Jason";
-	char *q[] = &str;*/
+	printf("\n test pointer of CHAR type..\n");
+
+	char a = 'a'; //若是有  error MSB6006: link.exe  ， 关闭VS2013相关联的conhost.exe
+	char *p = &a;
+
+	*p = 'b'; //改变 char a的值为b 
+
+	//printf("检查地址是否相同。");
+	printf("%c\n", a); //a的值变为b了
+
+
+	printf("\n test pointer of String type..\n");
+
+	char b[] = "acsd";
+	printf("%s", b);    //string写法
+
+	char c[] = { '1','2','3','4' };
+	printf("%s", c);
+
+	//char str[5] = "abcde"; //若是有  error MSB6006: link.exe  ， 关闭VS2013相关联的conhost.exe
+	//char (*p)[5] = str;
+
+	//*p = "edcba";
+	//
+	////printf("检查地址是否相同。");
+	//printf("%s\n", str);
+
 
 	system("pause");
 }
