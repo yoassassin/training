@@ -1,0 +1,283 @@
+@charset "utf-8"; /*默认就是utf-8*/
+/*
+1.文字的居中: text-align + line-height
+2.块的居中（如果有垂直定位的话，就是上下对齐，垂直上的看成一条线，块在上面移动就是垂直， 横着移动就是水平）： 相对定位 + 绝对定位
+3.有了class选择器，就可以不用每次都是> >选择下一层的子标签去定位了，而且基本都a b，a标签下所有的b元素这样使用，因为class已经明确好一个区域了，所以不用当心影响其他地域的标签
+4.id一般 选择命名肯定不会重复的一些html逻辑块里,比如header，nav，搜索框，footer等
+5.居中定位的几种方式：http://www.cnblogs.com/zyy711865/p/3479064.html
+	1)绝对定位 + 相对定位
+	2）margin和绝对定位一起
+	3)光margin好像也可以啊 margin:50% auto,不过这个除非是在文档流没有其他元素的情况下，不然会破坏其他文档流的位置，所以最好还是absolute,不过会覆盖其他的元素。Relative是文档流里的，absolute是脱离文档流的
+6.先从小局部做做，再调整大局部，比如居中，大局部会影响其他，小局部做好了居中，再调试
+7.相对定位： 别的元素是参考相对定位元素的原有位置，但是相对定位虽然在文档流里，但是不会把外边框挤出去，挤大
+*/
+body,h1,ul,h2,p,figure{
+	margin: 0;/*去掉标签自带的margin，使其贴着浏览器的边框*/
+	padding: 0;
+}
+
+.none{
+	display: none;
+}
+
+ul{
+	list-style: outside none none;/*去掉ul标识符*/
+}
+a{
+	text-decoration:none;
+}
+#header{
+	width: 100%;
+	min-width: 1263px;/*浏览器自带的右边的下拉框是17px，所以1280-17*/
+	height: 70px;
+	background-color: #333; /*颜色缩写，原本6位，2位相同即可缩写, #880066-->#806*/
+	/*box-shadow: 0 11px 100px #eee;/* 投影白色*/
+	box-shadow: 0 11px 100px rgba(74, 175, 123,0.5);/*设置阴影 看w3cshool里的练习可以很明白*//*谈绿色,鼠标点到rgba函数里会显示当前颜色 rgb是颜色，3种颜色调色，a是透明度，1是不透明*/
+	position: relative; /*这里不是relative不行， 阴影看不见。还有Z-index*/
+	/*
+	为了加阴影才加的，因为下面的search图片已经是relative了，是浮在上面的，覆盖了阴影（阴影是在header下面额外加出来的）
+	box-shadow:inset x-offset y-offset blur-radius spread-radius color
+	X-offset:是指阴影水平偏移量其值可以是正负值可以取正负值，如果值为正值，则阴影在对象的右边，反之其值为负值时，阴影在对象的左边；
+	Y-offset:是指阴影的垂直偏移量，其值也可以是正负值，如果为正值，阴影在对象的底部，反之其值为负值时，阴影在对象的顶部；
+	阴影模糊半径：此参数是可选，，但其值只能是为正值，如果其值为0时，表示阴影不具有模糊效果，其值越大阴影的边缘就越模糊,不允许负值,越大越谈；
+	阴影扩展半径：此参数可选，其值可以是正负值，如果值为正，则整个阴影都延展扩大，反之值为负值是，则缩小
+	往x轴或Y轴那边投影
+
+	x-offset  x 轴偏移   0                     
+	y-offset y轴偏移  0
+	blur 模糊值   5px 
+	color of shadow 阴影颜色   
+	rgba(40, 173, 243, 0.5);        
+	RGB是说颜色，A是指透明度  
+	红40, 绿173, 蓝243,   透明度50%
+*/
+	z-index: 9999;
+}
+
+#header .center { /*a > b 代表改a标签下的第一代子元素, a b 代表a下的所有b元素，包括孙子代 /*简写，原来是#nav > section*/
+	width:1263px; /*滚动条是17px，减去17px 。 注意header的宽度是1920，这里是1263,21.5寸的屏幕宽是1280*/
+	height: 70px;
+	margin:0 auto;	/*使logo居中，上下为0，左右auto就是居中*/
+}
+
+#header .logo{/*简写，原来是#nav > section > h1*/
+	width: 240px;
+	height: 70px;
+	background-image: url(../image/logo.png);
+	text-indent: -9999px;/*缩进=tab按键，负数可以把文字移除浏览器外边框，这里本来有文字的“xx旅行社”*/
+	float:left;
+}
+
+#header .link{    /*简写，原来是#nav > section > ul*/  /a.b是a标签中class为b的a标签，而a .b是a标签下的所有class为b的标签/
+	color:       #eee;
+	float:       right;
+	height:      70px;
+	text-align:  center;/*水平居中*/
+	line-height: 70px;/*只要和行高一样就垂直居中了*/
+	width: 650px;
+
+}
+
+#header .link li{/*简写， nav下的所有 link 下的所有 li 元素，原来是#nav > section > ul > li*/
+	float: left;
+	width:120px;
+	color: #eee;
+}
+
+#header .link li a {/*简写，>只能找到儿子代，孙子找不到 nav下的所有 link 下的所有 li 元素，原来是#nav > section > ul > li*/
+	color:#eee;
+	display: block;
+}
+
+/*简写，原来#nav > section > ul > li > a:hover,#nav > section > ul > li.active > a {*/
+#header .link a:hover,
+#header .active a { /*active下的所有<a  显示黑色背景*/
+	background-color: #000;
+}
+
+#search{
+	min-width: 1263px;
+	width: 100%;/*这里不是图像的1920px宽度*/
+	height: 600px;
+	/*
+	问题1：分辨率最低支持1280到1920以上，我们图片是1920的，所以1920显示整张图片
+	显示器低于1920显示中间部分，低于1280会有下方滚动条,超过1920会平铺
+
+	问题2：缩小到1280里面，右边的nav没有样式了
+	浏览器缩小会自适应，导致的，把最低宽度设置为1263px、设置header最小为1263px
+	解决了header还要解决其他的：设置search最小值，基本上100%的地方都设置一个最小值，因为还没设置响应式，
+
+	*/
+	background:  url(../image/search.jpg) no-repeat center;
+	/*如果要为了迎合大屏幕1080p以上的，左右不想空白的话，可以背景颜色做渐变色和图片搭配
+	background: blue（加个渐变色，这里颜色会涂满白色空隙） url(../image/search.jpg) no-repeat center;*/
+	position: relative; /*为了中间的搜索栏居中而加的relative,给absolute定位用的*/
+}
+
+/*
+					center搜索框要居中
+1.水平居中简单，只要margin:0 auto,但是垂直居中麻烦，要绝对定位和相对定位(只有把父类变成relative和absolute，子类才能定位)
+2.用相对于父类(#search)做相对定位,矩形的最左上角的点定位到了中间了，但是矩形不是居中的
+3,再减去长度和宽度一半的位置，通过外边来减， 上-30,右不动，下不动，左-300，坐标向下和右移动 正数，左和上移动是负数
+*/
+#search .center{
+	width: 600px;
+	height: 60px;
+	background-color: #000;
+	top:50%;
+	left:50%;
+	margin: -30px 0 0 -300px;
+	opacity: 0.6;/*透明化一般不在这里做，要不然搜索框里输入的文字也会被透明化*/
+	border-radius: 10px; /*圆角*/
+	position: absolute;
+	/*
+	1.这里为什么用absolute,而且设置relative的话，图片会上移遮盖了导航栏nav,而absolute不会
+	因为absolute是针对父元素 定位的，  而relative是根据自己 原先位置定位的，这里原先的位置已经被magin -30px 0 0 -300px上移和左移了， 已经覆盖到nav上了
+	参考博客园：http://www.cnblogs.com/jiqing9006/archive/2012/07/26/2610586.html 和http://zhidao.baidu.com/link?url=048LY2Xfm4XxLc1SCGpg0u2IXelQY4RohKOBktuJOAIuuRmFh1Ts5OLzXGHcXb_1sfwXE3i86lp6mBIBC0OEcq
+
+	先说相对定位：跟它的名一样，相对嘛，要有一个参照物，但这个参照不是别的，是它自己呢，也就是说没设相对定位的位置，
+	那你会问了，设没设都在那个位置为什么要设呢，因为只有设置了才能使 TOP,LEFT这些生效，也就是设了才能相对自己原来的位置偏移，
+	原来的位置保留着，偏移后会把其它的层遮罩住。
+	再说绝对定位：在布局里不可能有绝对定位的，再怎么样都有一个参照位置的，绝对定位的参照位置就不像相对那样是自己了，至于是哪个，
+	就看它的上级或上上级有没有定位了，也就是有没有position:relative;或position:fixed了，好像position:inherit;也行，前面两个可以，
+	后面那个不设什么的不用也行，最好用position:relative;吧,转入正题，当要绝对定位的层设好要参照位置的层后，就可以用TOP，LEFT这些来定位置了，
+	如果它的上级或上上级都没定位的话只就会根据BODY的位置来定位了,还有最后一点，绝对定位是不占位置的，它会像PS的图层一样单独做一层，
+	至于第几层你可以通过z-index:这个属性来设置
+	相对定位在文档流里
+	*/
+}
+
+#search .search{
+	width: 466px;
+	height: 54px; /*为什么父类的div的height是60px,这里是54px确正好一样高???*/
+	background-color: #fff;
+	color: #666;/*字体颜色*/
+	font-size: 20px;
+	border-radius: 10px;
+	padding: 0 10px;
+
+/*如果 button是在center里面的话。下面的定位不加也可以，我觉得，因为父类已经定位好了*/
+	top:50%;
+	left:50%;
+	margin: -29px 0 0 -296px; /*好像只有设置上和左能移动啊*/
+	position: absolute;/*绝对定位是浮在上面的,不占位置的*/
+	outline: none; /*有些浏览器focus后会有外边框*/
+	z-index: 1; /*如果按钮和输入框点不了，说明被覆盖了，把z-index提高*/
+}
+
+#search .button{
+	width: 103px;
+	height: 60px; /*为什么父类的div的height是60px,这里是54px确正好一样高???*/
+	background-color: #eee;
+	color: #666;/*字体颜色*/
+	font-size: 24px;
+	border-radius: 10px;
+
+/*如果 button是在center里面的话。下面的定位不加也可以，我觉得，因为父类已经定位好了*/
+	top:50%;
+	left:50%;
+	margin: -29px 0 0 195px;
+	position: absolute;
+	cursor: pointer;
+	font-weight: bold;
+	z-index: 1;
+}
+
+#tour{
+	width: 1263px;
+	height: 1200px;
+	/*background-color: #ccc; 更淡灰色，为了排列文档流 用背景色， 排好了可以删除*/
+	margin: 0 auto;
+	/*3*3图靠左，要居中，内联块是可以用text-align居中的，在父类center里做居中处理*/
+	text-align: center;
+}
+
+#tour .center{
+	text-align: center;
+}
+
+#tour .center h2{
+	margin: 30px 0; /*上下10px撑开点高度*/
+	font-size:45px;
+	color: #666;
+	letter-spacing: 2px;/*字体间距*/
+}
+
+#tour .center p{
+	margin: 10px 0; /*margin会重叠，所以上面就30，上下10px撑开点高度*/
+	/*font-size:45px;*/
+	color: #666;
+	letter-spacing: 2px;/*字体间距*/
+}
+
+#tour figure{
+	border:1px solid #ddd; /*#ddd淡灰色*/
+	display: inline-block;/*figure是块元素，所以border会占一整行，我们只要包围图片的border就好了，只占本身距离用inline，但是inline改变不了高度宽度，所以用inline-block*/
+	padding: 4px;/*边框和图片空出一点距离*/
+	border-radius:10px;
+	margin:15px 12px;/*图片太聚集了，分开点*/
+	width:380px;/*figcaption里东西太多，会把布局撑开来，width限制一下,会换行*/
+	text-align: left;
+	position: relative;/*为了 国内长线 做定位用的*/
+	cursor: pointer; /*鼠标变成手指*/
+
+}
+
+/*图片下面和border有白色空隙的解决方式*/
+#tour figure img{
+	vertical-align: middle; /* 设置垂直高度*/
+}
+
+#tour figcaption{
+	/*text-align: left;*/
+	color:#777;
+	font-size: 14px;
+	letter-spacing: 1px;
+	line-height: 1.5; /*行高1.5倍*/
+	padding:5px 0 7px 0/*做好price和satisfied发现有点拥挤*/
+}
+
+#tour .title{
+	color:#333;
+	font-weight: normal; /*去掉粗体*/
+}
+
+#tour .sat{
+	float:right; /*直接右浮动就好了，上面已经被块占据了位置了，不会浮上去的， div是个砖块占据地方，float会浮动起来，变成一片纸，下面能塞div或其他东西*/ 
+	font-size: 14px;
+	color:#999;/*#111到#999都是黑色，111颜色最深，颜色淡一点*/
+	font-style: normal;/*取消倾斜*/
+	/*background-color:red;调整完，发现满意度比价格高一点，并且太靠右边了, 加背景颜色测试他是内联还是块，内联的话就红色一小块,inline用相对定位比较好，但是下面这也也可以啊*/
+	/*	用相对定位可能是因为不会破坏已经布置好的文档流吧，下面的line-height会把边框撑大
+	line-height: 22px; 调整上下高度
+	padding: 0 5px 0 0; 调整 往 右边靠一点
+	*/
+	position: relative;
+	top:5px;	/*上边空出5个像素 相对定位： 别的元素是参考相对定位元素的原有位置，但是相对定位虽然在文档流里，但是不会把外边框挤出去，挤大*/
+	right: 5px; /*右边空出5个像素*/
+
+}
+
+#tour .price{
+	color: #F60; /*橘红色*/
+	font-size: 13px;
+	letter-spacing: 1px;
+}
+
+#tour .price strong{
+	font-size: 20px; 
+}
+
+#tour .type{
+	width:       90px;
+	height:      25px;
+	line-height: 25px;
+	color:       #fff;
+	font-size:        14px;
+	background-color: #59b280;
+	text-align: center; 
+	/*type要在覆盖在图片的左上角，做个相对和绝对定位, 依附在figure下，figure做相对，type做绝对*/
+	position: absolute; /*不写4个方向的位置就会在最近的块元素的下方，他不会侵占其他元素位置，脱离了文档流，所以刚刚被他拉长的边框又缩进回去了*/
+	top:4px; /*在padding的4px里面*/
+	left:4px;
+}
