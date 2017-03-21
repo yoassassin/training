@@ -1,0 +1,324 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Jq",
+				"jquery"
+			],
+			[
+				"heig",
+				"height"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"bakc",
+				"background-color"
+			],
+			[
+				"box",
+				"box-shadow"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"bak",
+				"background-color"
+			],
+			[
+				"auto",
+				"autofocus	Attr"
+			],
+			[
+				"t",
+				"type	Attr"
+			],
+			[
+				"li",
+				"link	Tag"
+			],
+			[
+				"onm",
+				"onmouseover	Attr"
+			],
+			[
+				"get",
+				"getFirstCityCollection"
+			],
+			[
+				"on",
+				"onkeyup	Attr"
+			],
+			[
+				"d",
+				"document"
+			],
+			[
+				"ti",
+				"title"
+			],
+			[
+				"s",
+				"status"
+			],
+			[
+				"u",
+				"update"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"mar",
+				"margin"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 215.0,
+		"last_filter": "Package Control: ins",
+		"selected_items":
+		[
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 792.0
+	},
+	"console":
+	{
+		"height": 186.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Git/html5+css3/html5+css3固定布局.html",
+		"/C/Git/html5+css3/测试jquery中function里的参数名字必须要标准里的名字一样吗.html",
+		"/C/Git/html5+css3/css/style.css",
+		"/C/Git/Jquery/jqueryIndex.html",
+		"/C/Users/zcao008/Desktop/js.html",
+		"/C/Git/html5+css3/测试绝对定位里面的元素是不是也要绝对定位.html",
+		"/C/Git/html5+css3/css/1.html",
+		"/C/Git/Bootstrap/html.html",
+		"/C/Git/Bootstrap/js/npm.js",
+		"/C/Users/zcao008/.ssh/id_rsa",
+		"/C/Git/Bootstrap/index.html",
+		"/C/Users/zcao008/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Git_Tortoise/index.html",
+		"/C/曹钟玛201603040094/first.js",
+		"/C/Git_Tortoise/read.txt",
+		"/C/Git_Tortoise/README.md",
+		"/C/Git_Tortoise/add后修改不再add直接commit - Copy.html",
+		"/C/Git_Tortoise/直接am合并add和commit.html",
+		"/C/Git_Tortoise/.git/config",
+		"/C/WorkSpace2/TFS/TST/Dev/Reports/All.rdl",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/zcao008/.gitconfig",
+		"/C/曹钟玛201603040094/01 综合/Code/Comprehensive/.git/config",
+		"/C/Git_Tortoise/add后修改不再add直接commit.html",
+		"/C/Users/zcao008/Desktop/testM.html",
+		"/C/Users/zcao008/Desktop/1.html"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"MyRptSharedGetFinancialControlLevelCustomerByUserPermission",
+			"gzhu",
+			"http://localhost/ReportServer",
+			"gzhu",
+			"MyRptSharedGetFundType",
+			"MyRpt",
+			"PGTSTConsCAS103DB",
+			"MyRpt",
+			"PGTSTConsCAS103DB"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "readme.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 310.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
