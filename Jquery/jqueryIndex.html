@@ -1,0 +1,46 @@
+<!-- 
+1.Jquery选择器是参照css的，css:#box, jquery是前面加$('')， jquery写法与css十分类似，css是添加样式，jquery添加行为
+2.$(document).ready() = $() 省略了(document).ready， ()代表了(document).ready后的那个()
+	意义：用jquery取document元素的ready方法
+3.Id重复只认第一个id
+4.a > b a的子节点   
+5.a b a所有的节点
+6. a.b 名字还是b的a标签
+7. a .b a标签下所有class是b的
+8. .a.b 多个class，标签 class = 'a b'
+9. .a, .b 群组class,选取class='a'和class ='b'的
+10.容错， 如果取的名字没有，网页console不报错，但是getElementById会报错 
+11.在全局范围是使用通配符*，会消耗资源（统计所有标签的），不建议使用，$('*').[0].nodeName 取出节点 名字
+	可以用$('ul li *'').css('color','red'),ul下的所有li下的所有节点都是红色
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>常规选择器</title>
+	<script src="js/jquery.min.js"></script>
+	<script>	
+		$(document).ready(
+			function(){
+			$('#box').css('color','blue')
+			
+			$('ul *').css('color','red');
+			
+
+			});
+		// $(function(){
+		// 	$('#box').css('color','blue'); 
+		// 	});
+	</script>
+
+</head>
+<body>
+	<div id="box">常规选择器</div>
+	<ul>
+		<li>-1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><script type="text/javascript" src="js/jquery.min.js"></script></head>
+<body>
+
+<form action="action_page.php">
+First name:<br>
+<input type="text" id="txt" name="firstname" value="Mickey">
+<br>
+<input id='lbl' />
+</br>
+Last name:<br>
+
+</body>
+
+<script>
+$(document).ready(function(){
+	var t = $('#txt').val();
+	$('#lbl').val(t);
+});
+</script>
+</html>
