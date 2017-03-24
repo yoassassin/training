@@ -1,0 +1,14 @@
+﻿@model mvc3.micro.music_store.Models.Genre
+
+@{
+    ViewBag.Title = "Browse";
+}
+
+<h2>Browse Name: @Model.Name</h2>
+
+<ul>
+    @foreach (var album in Model.Albums)
+    {
+        <li>@Html.ActionLink(album.Title, "Detail", new { id = album.AlbumId })</li> //最后个参数不能直接写album.AlbumId， 因为是要对应url里的名字的，并且和action里的参数名一致
+    }
+</ul>

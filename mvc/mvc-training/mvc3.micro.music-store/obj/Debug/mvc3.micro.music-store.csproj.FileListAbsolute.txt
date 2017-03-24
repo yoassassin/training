@@ -31,3 +31,5 @@ C:\Git\mvc\mvc-training\mvc3.micro.music-store\bin\System.Web.Mvc.xml
 C:\Git\mvc\mvc-training\mvc3.micro.music-store\obj\Debug\mvc3.micro.music-store.csprojResolveAssemblyReference.cache
 C:\Git\mvc\mvc-training\mvc3.micro.music-store\obj\Debug\mvc3.micro.music-store.dll
 C:\Git\mvc\mvc-training\mvc3.micro.music-store\obj\Debug\mvc3.micro.music-store.pdb
+C:\Git\mvc\mvc-training\mvc3.micro.music-store\bin\EntityFramework.dll
+C:\Git\mvc\mvc-training\mvc3.micro.music-store\bin\EntityFramework.xml
