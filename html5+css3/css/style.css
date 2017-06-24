@@ -1,4 +1,4 @@
-@charset "utf-8"; /*默认就是utf-8*/
+﻿@charset "utf-8"; /*默认就是utf-8*/
 /*
 1.文字的居中: text-align + line-height
 2.块的居中（如果有垂直定位的话，就是上下对齐，垂直上的看成一条线，块在上面移动就是垂直， 横着移动就是水平）： 相对定位 + 绝对定位
@@ -7,13 +7,18 @@
 5.居中定位的几种方式：http://www.cnblogs.com/zyy711865/p/3479064.html
 	1)绝对定位 + 相对定位
 	2）margin和绝对定位一起
-<<<<<<< HEAD
-	3)光margin好像也可以啊 margin:50% auto,不过这个除非是在文档流没有其他元素的情况下，不然会破坏其他文档流的位置，所以最好还是absolute,不过会覆盖其他的元素。Relative是文档流里的，absolute是脱离文档流的
-=======
 	3)光margin好像也可以啊 margin:50% auto,不过这个除非是在文档流没有其他元素的情况下，不然会破坏其他文档流的位置，所以最好还是absolute,不过会覆盖其他的元素
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 6.先从小局部做做，再调整大局部，比如居中，大局部会影响其他，小局部做好了居中，再调试
 7.相对定位： 别的元素是参考相对定位元素的原有位置，但是相对定位虽然在文档流里，但是不会把外边框挤出去，挤大
+8.	先说相对定位：跟它的名一样，相对嘛，要有一个参照物，但这个参照不是别的，是它自己呢，也就是说没设相对定位的位置，
+	那你会问了，设没设都在那个位置为什么要设呢，因为只有设置了才能使 TOP,LEFT这些生效，也就是设了才能相对自己原来的位置偏移，
+	原来的位置保留着，偏移后会把其它的层遮罩住。
+	再说绝对定位：在布局里不可能有绝对定位的，再怎么样都有一个参照位置的，绝对定位的参照位置就不像相对那样是自己了，至于是哪个，
+	就看它的上级或上上级有没有定位了，也就是有没有position:relative;或position:fixed了，好像position:inherit;也行，前面两个可以，
+	后面那个不设什么的不用也行，最好用position:relative;吧,转入正题，当要绝对定位的层设好要参照位置的层后，就可以用TOP，LEFT这些来定位置了，
+	如果它的上级或上上级都没定位的话只就会根据BODY的位置来定位了,还有最后一点，绝对定位是不占位置的，它会像PS的图层一样单独做一层，
+	至于第几层你可以通过z-index:这个属性来设置
+9.	
 */
 body,h1,ul,h2,p,figure{
 	margin: 0;/*去掉标签自带的margin，使其贴着浏览器的边框*/
@@ -32,21 +37,12 @@ a{
 }
 #header{
 	width: 100%;
-<<<<<<< HEAD
-	min-width: 1263px;/*浏览器自带的右边的下拉框是17px，所以1280-17*/
-	height: 70px;
-	background-color: #333; /*颜色缩写，原本6位，2位相同即可缩写, #880066-->#806*/
-	/*box-shadow: 0 11px 100px #eee;/* 投影白色*/
-	box-shadow: 0 11px 100px rgba(74, 175, 123,0.5);/*设置阴影 看w3cshool里的练习可以很明白*//*谈绿色,鼠标点到rgba函数里会显示当前颜色 rgb是颜色，3种颜色调色，a是透明度，1是不透明*/
-	position: relative; /*这里不是relative不行， 阴影看不见。还有Z-index*/
-=======
 	min-width: 1263px;
 	height: 70px;
 	background-color: #333; /*颜色缩写，原本6位，2位相同即可缩写, #880066-->#806*/
 	/*box-shadow: 0 11px 100px #eee;/* 投影白色*/
 	box-shadow: 0 11px 100px rgba(74, 175, 123,0.5);/*谈绿色 rgb是颜色，3种颜色调色，a是透明度，1是不透明*/
 	position: relative;
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 	/*
 	为了加阴影才加的，因为下面的search图片已经是relative了，是浮在上面的，覆盖了阴影（阴影是在header下面额外加出来的）
 	box-shadow:inset x-offset y-offset blur-radius spread-radius color
@@ -68,26 +64,16 @@ a{
 }
 
 #header .center { /*a > b 代表改a标签下的第一代子元素, a b 代表a下的所有b元素，包括孙子代 /*简写，原来是#nav > section*/
-<<<<<<< HEAD
-	width:1263px; /*滚动条是17px，减去17px 。 注意header的宽度是1920，这里是1263,21.5寸的屏幕宽是1280*/
-	height: 70px;
-	margin:0 auto;	/*使logo居中，上下为0，左右auto就是居中*/
-=======
 	width:1263px; /*滚动条是17px，减去17px*/
 	height: 70px;
 	margin:0 auto;	/*上下为0，左右auto就是居中*/
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 }
 
 #header .logo{/*简写，原来是#nav > section > h1*/
 	width: 240px;
 	height: 70px;
 	background-image: url(../image/logo.png);
-<<<<<<< HEAD
-	text-indent: -9999px;/*缩进=tab按键，负数可以把文字移除浏览器外边框，这里本来有文字的“xx旅行社”*/
-=======
 	text-indent: -9999px;/*缩进=tab按键，负数可以把文字移除浏览器外边框*/
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 	float:left;
 }
 
@@ -114,11 +100,7 @@ a{
 
 /*简写，原来#nav > section > ul > li > a:hover,#nav > section > ul > li.active > a {*/
 #header .link a:hover,
-<<<<<<< HEAD
-#header .active a { /*active下的所有<a  显示黑色背景*/
-=======
 #header .active a {
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 	background-color: #000;
 }
 
@@ -128,11 +110,7 @@ a{
 	height: 600px;
 	/*
 	问题1：分辨率最低支持1280到1920以上，我们图片是1920的，所以1920显示整张图片
-<<<<<<< HEAD
-	显示器低于1920显示中间部分，低于1280会有下方滚动条,超过1920会平铺
-=======
 	低于1920显示中间部分，低于1280会有下方滚动条,超过1920会平铺
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 
 	问题2：缩小到1280里面，右边的nav没有样式了
 	浏览器缩小会自适应，导致的，把最低宽度设置为1263px、设置header最小为1263px
@@ -142,11 +120,7 @@ a{
 	background:  url(../image/search.jpg) no-repeat center;
 	/*如果要为了迎合大屏幕1080p以上的，左右不想空白的话，可以背景颜色做渐变色和图片搭配
 	background: blue（加个渐变色，这里颜色会涂满白色空隙） url(../image/search.jpg) no-repeat center;*/
-<<<<<<< HEAD
-	position: relative; /*为了中间的搜索栏居中而加的relative,给absolute定位用的*/
-=======
 	position: relative;
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 }
 
 /*
@@ -178,10 +152,6 @@ a{
 	后面那个不设什么的不用也行，最好用position:relative;吧,转入正题，当要绝对定位的层设好要参照位置的层后，就可以用TOP，LEFT这些来定位置了，
 	如果它的上级或上上级都没定位的话只就会根据BODY的位置来定位了,还有最后一点，绝对定位是不占位置的，它会像PS的图层一样单独做一层，
 	至于第几层你可以通过z-index:这个属性来设置
-<<<<<<< HEAD
-	相对定位在文档流里
-=======
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 	*/
 }
 
@@ -257,11 +227,7 @@ a{
 	width:380px;/*figcaption里东西太多，会把布局撑开来，width限制一下,会换行*/
 	text-align: left;
 	position: relative;/*为了 国内长线 做定位用的*/
-<<<<<<< HEAD
-	cursor: pointer; /*鼠标变成手指*/
-=======
 	cursor: pointer;
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 
 }
 
@@ -285,11 +251,7 @@ a{
 }
 
 #tour .sat{
-<<<<<<< HEAD
-	float:right; /*直接右浮动就好了，上面已经被块占据了位置了，不会浮上去的， div是个砖块占据地方，float会浮动起来，变成一片纸，下面能塞div或其他东西*/ 
-=======
 	float:right; /*直接右浮动就好了，上面已经被块占据了位置了，不会浮上去的*/
->>>>>>> 631e0b9a6ffba661343a113b5d22071f133c77fe
 	font-size: 14px;
 	color:#999;/*#111到#999都是黑色，111颜色最深，颜色淡一点*/
 	font-style: normal;/*取消倾斜*/
