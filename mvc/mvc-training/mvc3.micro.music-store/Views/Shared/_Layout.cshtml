@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title> <!--值根据Renderbody里的ViewBag.Title， 很奇怪，页面前面的用后面的值-->
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+</head>
+<body>
+    <div id="header">
+        <h1>ASP.Net MVC Music Store</h1>
+        <ul id="navlist">
+            <li class="first"><a href="/" id="current">Home</a></li> <!-- href里保存的是域名（这里是localhost:端口/）下的目录。 不写/也没事，这里只是更清楚--> 
+            <li><a href="/Store">Store</a></li>    <!-- href里保存的是域名（这里是localhost:端口/Store/）下的目录--> 
+        </ul>
+    </div>
+
+    @RenderBody() <!--渲染 view文件夹下的 页面， 这里不加分号 作为EOS(end of statement)， 借鉴JS不加分号的规则-->
+</body>
+</html>

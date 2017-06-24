@@ -1,0 +1,27 @@
+﻿@model IEnumerable<mvc3.micro.music_store.Models.Genre>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Browse Genres</h3>
+<p>Select from @Model.Count() genres:</p>
+<ul>
+    @*@foreach (var genre in Model)
+    {
+        <li><a href="/Store/Browse?genre=@genre.Name">@genre.Name</a></li>
+    }*@
+    @*
+    这样就可以工作了，但是这里使用了硬编码的字符串，如果我们希望修改控制器的名称，那么，我们就要找到所有这样的位置进行修改
+
+    更好的处理方式是使用 HTMLHelper 的助手方法，ASP.NET MVC 包含了一个 HTML 的助手类，其中的方法专门用于在视图模板中完成多种常见的任务，其中的Html.ActionLink() 助手方法就是常用的一个，这使得可以容易地创建
+    <a>
+        ，包括关于链接的一些细节处理，像地址需要进行 URL 编码之类。
+    *@
+
+    @foreach (var genre in Model)
+        {
+            <li>@Html.ActionLink(genre.Name,"Browse", new { genre = genre.Name})</li>// genre = genre.Name是route value，url里拼接的参数， 如果new {genre.Name}也可以，但是url里显示的是 ?Name = xxx 而不是?genre = xxx
+    }
+</ul>
+
